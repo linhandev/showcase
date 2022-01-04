@@ -1,4 +1,8 @@
 model/
+data/
+insect_det/
+output/
+vis/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,24 @@
+<html>
+  <head> </head>
+
+  <body>
+    <!-- 加载 ONNX.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+    <!-- 使用代码 -->
+    <script>
+      // 创建会话
+      const myOnnxSession = new onnx.InferenceSession();
+      // 加载模型
+      myOnnxSession.loadModel(".onnx/shoe.onnx").then(() => {
+        // 生成输入数据
+        const inferenceInputs = getInputs();
+        // 运行模型
+        myOnnxSession.run(inferenceInputs).then((output) => {
+          // 获取输出
+          const outputTensor = output.values().next().value;
+          console.log(`model output tensor: ${outputTensor.data}.`);
+        });
+      });
+    </script>
+  </body>
+</html>
