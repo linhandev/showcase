@@ -1,0 +1,4 @@
+paddlepaddle
+paddlex
+flask
+opencv-python

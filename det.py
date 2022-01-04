@@ -35,8 +35,8 @@ while True:
                     r["score"],
                     file=f,
                 )
-                f.flush()
-                # input("here")
+            f.flush()
+            input("here")
 
 
 cv2.destroyAllWindows()
