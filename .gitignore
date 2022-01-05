@@ -3,6 +3,8 @@ data/
 insect_det/
 output/
 vis/
+inference_model/
+dataset/ann/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

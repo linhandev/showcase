@@ -11,3 +11,5 @@ hub convert --model_dir inference_model/inference_model \
 
 export FLASK_APP=app
 flask run
+
+sudo pacman -S sox
