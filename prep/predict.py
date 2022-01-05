@@ -91,18 +91,26 @@ for img_name in tqdm(imgs):
     print(img_name)
     img = cv2.imread(osp.join(img_dir, img_name))
     results = predictor.predict(img)
-    # print(results)
+    print(results)
     bbs = []
+    scores = []
     for r in results:
-        t = r["bbox"]
+        if r["score"] < 0.3:
+            continue
+        t = r["bbox"].copy()
         t[2] += t[0]
         t[3] += t[1]
         bbs.append(t)
-    names = ["shoe" * len(bbs)]
-    f = open(osp.join(opd, "_".join(img_name.split(".")) + ".xml"), "w")
+        scores.append(r["score"])
+    # print(max(scores))
+    names = ["shoe"] * len(bbs)
+    f = open(osp.join(opd, img_name.split(".")[0] + ".xml"), "w")
     xml = toPascal(img_name, img.shape, bbs, names)
     # print(xml)
     print(xml, file=f)
     f.close()
     # input("here")
-    # img = pdx.det.visualize(img, result, threshold=0.00001, save_dir=None)
+
+    # img = pdx.det.visualize(img, results, threshold=0.3, save_dir=None)
+    # cv2.imshow("result", img)
+    # cv2.waitKey()

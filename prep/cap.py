@@ -6,7 +6,7 @@ import os
 import cv2
 
 
-opd = "./dataset/img"
+opd = f"./prep/img/{strftime('%m_%d-%H_%M')}"
 if not osp.exists(opd):
     os.makedirs(opd)
 
@@ -21,7 +21,7 @@ while 1:
     if time.time() - start > 4 and time.time() - tic > 1:
         print("capture")
         os.system("play -q -n synth 0.08 sin 880 || echo -e '\a'")
-        cv2.imwrite(osp.join(opd, f"{strftime('%H_%M_%S')}.png"), frame)
+        cv2.imwrite(osp.join(opd, f"{strftime('%m_%d-%H_%M_%S')}.png"), frame)
         tic = time.time()
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
