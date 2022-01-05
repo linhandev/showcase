@@ -3,7 +3,7 @@ import time
 import cv2
 import paddlex as pdx
 
-predictor = pdx.deploy.Predictor("./inference_model/inference_model")
+predictor = pdx.deploy.Predictor("./inference_model")
 
 tic = time.time()
 fps = 10
