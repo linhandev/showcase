@@ -1,7 +1,9 @@
 import os
 import os.path as osp
 
-base = "/home/lin/Desktop/git/other/showcase/data/shoe_clas/training"
+base = (
+    "/home/lin/Desktop/git/other/ImageNet-datasets-downloader/imgnet/imagenet_images/"
+)
 fdrs = os.listdir(base)
 fdrs.remove("all")
 print(fdrs)

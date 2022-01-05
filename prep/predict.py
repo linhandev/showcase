@@ -11,7 +11,7 @@ opd = "./prep/ann"
 img_dir = "./prep/img"
 imgs = os.listdir(img_dir)
 imgs.sort()
-print(imgs)
+# print(imgs)
 
 # start_name = "sneakers-image206.jpg"
 # try:
@@ -22,11 +22,12 @@ print(imgs)
 
 # imgs = [i for i in imgs if i.startswith("soccer_shoes-image")]
 
-print(f"Doing prediction on {len(imgs)} images")
+model_path = "./inference/ppyolo-tiny"
+print(f"Doing prediction on {len(imgs)} images, using model f{model_path}")
 
 input("continue ")
 
-predictor = pdx.deploy.Predictor("./inference/ppyolov2")
+predictor = pdx.deploy.Predictor(model_path)
 
 
 def toPascal(fname, size, bbs, names):
@@ -91,7 +92,7 @@ for img_name in tqdm(imgs):
     print(img_name)
     img = cv2.imread(osp.join(img_dir, img_name))
     results = predictor.predict(img)
-    print(results)
+    # print(results)
     bbs = []
     scores = []
     for r in results:

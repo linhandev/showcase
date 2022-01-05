@@ -2,7 +2,7 @@
 export FLASK_APP=app
 flask run
 
-paddlex --export_inference --model_dir=./model/ppyolov2 --save_dir=./inference
+paddlex --export_inference --model_dir=./model/ppyolo-tiny --save_dir=./inference
 
 <!-- paddle2onnx --model_dir ./inference_model/inference_model --model_filename model.pdmodel --params_filename model.pdiparams --save_file ./onnx/shoe.onnx --opset_version 11 --enable_onnx_checker True -->
 
