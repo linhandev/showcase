@@ -5,21 +5,28 @@ from tqdm import tqdm
 import paddlex as pdx
 import cv2
 
-predictor = pdx.deploy.Predictor("./inference_model/ppyolo-tiny")
 
-opd = "./dataset/ann"
+opd = "./prep/ann"
 
-img_dir = "./data/pascal/JPEGImages"
+img_dir = "./prep/img"
 imgs = os.listdir(img_dir)
+imgs.sort()
+print(imgs)
 
-start_name = "sandals-image61.jpg"
-try:
-    start_index = imgs.index(start_name)
-except ValueError:
-    start_index = 0
-imgs = imgs[start_index:]
+# start_name = "sneakers-image206.jpg"
+# try:
+#     start_index = imgs.index(start_name)
+# except ValueError:
+#     start_index = 0
+# imgs = imgs[start_index:]
+
+# imgs = [i for i in imgs if i.startswith("soccer_shoes-image")]
 
 print(f"Doing prediction on {len(imgs)} images")
+
+input("continue ")
+
+predictor = pdx.deploy.Predictor("./inference/ppyolov2")
 
 
 def toPascal(fname, size, bbs, names):
