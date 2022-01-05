@@ -13,7 +13,6 @@ paddlex --export_inference --model_dir=./model/ppyolo-tiny --save_dir=./inferenc
             --output_dir hub_serving -->
 
 
-
 # capture image
 sudo pacman -S sox
 
